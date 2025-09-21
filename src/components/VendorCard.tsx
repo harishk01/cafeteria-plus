@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Clock, MapPin, Star, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +24,8 @@ interface VendorCardProps {
 }
 
 export const VendorCard = ({ vendor }: VendorCardProps) => {
+  const navigate = useNavigate();
+  
   const getDietaryColor = (option: string) => {
     switch (option) {
       case "Veg": return "bg-success text-success-foreground";
@@ -102,6 +105,7 @@ export const VendorCard = ({ vendor }: VendorCardProps) => {
           className="w-full mt-4" 
           disabled={!vendor.isOpen}
           variant={vendor.isOpen ? "default" : "secondary"}
+          onClick={() => vendor.isOpen && navigate(`/menu/${vendor.id}`)}
         >
           {vendor.isOpen ? "View Menu" : "Closed"}
         </Button>
