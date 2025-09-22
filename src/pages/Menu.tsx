@@ -214,7 +214,11 @@ const Menu = () => {
       {getTotalItems() > 0 && (
         <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border p-4">
           <div className="container mx-auto">
-            <Button className="w-full" size="lg">
+            <Button 
+              className="w-full" 
+              size="lg"
+              onClick={() => navigate("/cart", { state: { vendorId, cart } })}
+            >
               <ShoppingCart className="w-4 h-4 mr-2" />
               View Cart ({getTotalItems()} items)
             </Button>
